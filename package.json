@@ -1,0 +1,18 @@
+{
+  "name": "spotify-playlist-twitter-bot",
+  "version": "1.0.0",
+  "description": "tweets back Spotify playlist based on specified artists",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "Joshua Deng",
+  "license": "ISC",
+  "dependencies": {
+    "request-promise": "^4.2.2",
+    "twit": "^2.2.9"
+  },
+  "engines": {
+    "node": "8.9.4"
+  }
+}
