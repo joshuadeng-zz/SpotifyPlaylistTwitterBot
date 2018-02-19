@@ -6,10 +6,10 @@ var stream = T.stream('statuses/filter', {
 });
 
 
-stream.on('tweet', function(tweet) {
+stream.on('tweet', function (tweet) {
     var playlistName = "@" + tweet.user.screen_name + " ";
     var input = tweet.text.replace("@playlist_bot", "").split(",");
-    makeRequests(input, playlistName, tweet).catch(function(error) { //handles Spotify API requests and tweets back response
+    makeRequests(input, playlistName, tweet).catch(function (error) { //handles Spotify API requests and tweets back response
         console.log(error);
     });
 });
@@ -34,7 +34,7 @@ async function makeRequests(input, playlistName, tweet) {
             status: "@" + tweet.user.screen_name + ", the artist(s) you specified could not be found. Check for typos.",
             in_reply_to_status_id: tweet.id_str,
         };
-        T.post('statuses/update', params, function(err, data, response) { //tweet back the playlist
+        T.post('statuses/update', params, function (err, data, response) { //tweet back the playlist
             console.log(data);
         });
         return;
@@ -61,7 +61,7 @@ async function makeRequests(input, playlistName, tweet) {
     };
 
     if (url !== undefined)
-        T.post('statuses/update', params, function(err, data, response) { //tweet back the playlist
+        T.post('statuses/update', params, function (err, data, response) { //tweet back the playlist
             console.log(data);
         });
 }
@@ -71,7 +71,7 @@ function refreshToken() {
     return {
         method: 'POST',
         url: 'https://accounts.spotify.com/api/token',
-        headers: { 
+        headers: {
             Authorization: 'Basic ' + process.env.AUTH_CODE
         },
         form: {
